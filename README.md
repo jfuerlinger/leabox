@@ -23,10 +23,38 @@ This project is some kind of a port of Tonies box
     }
      ```
 1. Put your SD card into your Raspberry PI and boot the device
-1. `ssh pi@raspberrypi.local`
-1. Use default password `raspberry`
-1. Change your password after login `passwd`
-1. Update your packages `sudo apt-get update -y && sudo apt-get upgrade -y`
+1. Connecto to your device:
+
+   `ssh pi@raspberrypi.local`
+
+1. Use default password:
+
+    `raspberry`
+
+1. Change your password after login:
+
+   `passwd`
+
+1. Update your packages:
+   
+   `sudo apt-get update -y && sudo apt-get upgrade -y`
+
+1. Install Node JS: 
+
+   ```
+   wget https://nodejs.org/dist/v10.16.3/node-v10.16.3-linux-armv6l.tar.xz
+   tar -xf node-v10.16.3-linux-armv6l.tar.xz
+   sudo cp -R node-v10.16.3-linux-armv6l/* /usr/local/
+   rm -R node-v10.16.3-linux-armv6l
+   ```
+
+1. Install Git:
+ 
+   `sudo apt-get install git`
+
+1. Clone the source
+
+   `git clone https://github.com/jfuerlinger/leabox`
 
 ## Ressources
 
