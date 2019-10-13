@@ -35,6 +35,10 @@ This project is some kind of a port of Tonies box
 
    `passwd`
 
+1. Change the hostname of the device and expand the filesystem
+
+   `sudo raspi-config`
+
 1. Update your packages:
    
    `sudo apt-get update -y && sudo apt-get upgrade -y`
