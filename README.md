@@ -11,7 +11,9 @@ This project is some kind of a port of Tonies box
 1. [Download](https://downloads.raspberrypi.org/raspbian_lite_latest) most current Raspbian Image
 1. Use [BalenaEtcher](https://www.balena.io/etcher/) to write the downloaded image to the SD card
 1. Create empty file named ```ssh``` in the root directory of the SD card
-    ``` sh
+1. Create the file `wpa_supplicant.conf` in the root directory of the SD card
+   
+   ``` sh
     country=AT
     ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
     update_config=1
