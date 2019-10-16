@@ -1,5 +1,5 @@
 "use strict";
-const Mfrc522 = require("./../index");
+const Mfrc522 = require("mfrc522-rpi");
 const SoftSPI = require("rpi-softspi");
 
 //# This loop keeps checking for chips. If one is near it will get the UID and authenticate
