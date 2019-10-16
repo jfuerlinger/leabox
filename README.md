@@ -5,6 +5,23 @@ This project is some kind of a port of Tonies box
 # Hardware
 
 1. [Raspberry Pi Zero W](https://electronics.semaf.at/Raspberry-Pi-Zero-W-nur-Board?curr=EUR&gclid=CjwKCAjwlovtBRBrEiwAG3XJ--LvAlaqz9DZxxMFLESknRc7-y4u30wBeKS0E-KI2xG9wMrsksD5ARoCvNUQAvD_BwE)
+2. [RFID Kit RC522 13,56MHz](https://www.amazon.de/gp/product/B01M28JAAZ/ref=ppx_yo_dt_b_asin_title_o02_s00?ie=UTF8&psc=1)
+
+## Wiring
+
+### RFID Kit
+
+| TF522 Modul   | Raspberry Pi  |
+| :--: |:----------------------:|
+| SDA  | Pin 24 / GPIO8 (CE0)   |
+| SCK  | Pin 23 / GPIO11 (SCKL) |
+| MOSI | Pin 19 / GPIO10 (MOSI) |
+| MISO | Pin 21 / GPIO09 (MISO) |
+| IRQ  | ---                    |
+| GND  | Pin 6 (GND)            |
+| RST  | Pin 22 / GPIO25        |
+| 3.3V | Pin 1 (3V3)            |
+
 
 # Infrastructure
 
