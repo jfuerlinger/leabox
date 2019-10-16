@@ -68,16 +68,27 @@ This project is some kind of a port of Tonies box
    wget https://nodejs.org/dist/v10.16.3/node-v10.16.3-linux-armv6l.tar.xz
    tar -xf node-v10.16.3-linux-armv6l.tar.xz
    sudo cp -R node-v10.16.3-linux-armv6l/* /usr/local/
+   rm node-v10.16.3-linux-armv6l.tar.xz
    rm -R node-v10.16.3-linux-armv6l
+   node -v
    ```
 
 1. Install Git:
  
    `sudo apt-get install git`
 
+1. Install libasound2-dev (needed for the npm-speaker module)
+
+   `sudo apt-get install libasound2-dev`
+
 1. Clone the source
 
    `git clone https://github.com/jfuerlinger/leabox`
+
+1. Download all the npm-modules
+
+   `npm install`
+
 
 ## Ressources
 
