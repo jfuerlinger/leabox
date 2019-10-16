@@ -6,6 +6,7 @@ This project is some kind of a port of Tonies box
 
 1. [Raspberry Pi Zero W](https://electronics.semaf.at/Raspberry-Pi-Zero-W-nur-Board?curr=EUR&gclid=CjwKCAjwlovtBRBrEiwAG3XJ--LvAlaqz9DZxxMFLESknRc7-y4u30wBeKS0E-KI2xG9wMrsksD5ARoCvNUQAvD_BwE)
 2. [RFID Kit RC522 13,56MHz](https://www.amazon.de/gp/product/B01M28JAAZ/ref=ppx_yo_dt_b_asin_title_o02_s00?ie=UTF8&psc=1)
+3. [USB Sound Adapter 7.1 - DeLock -Virtual 7.1 Sound](https://www.amazon.de/gp/product/B001FA2J3U/ref=ppx_yo_dt_b_asin_title_o01_s00?ie=UTF8&psc=1)
 
 ## Wiring
 
