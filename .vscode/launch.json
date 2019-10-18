@@ -8,7 +8,13 @@
             "type": "node",
             "request": "launch",
             "name": "Debug Lea-Box",
-            "program": "${workspaceFolder}\\dist\\bundle.js"
+            "program": "${workspaceFolder}/dist/bundle.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug rfid.js",
+            "program": "${workspaceFolder}/rfid.js"
         }
     ]
 }

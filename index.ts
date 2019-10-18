@@ -7,8 +7,6 @@ import * as readline from 'readline';
 
 const log = console.log;
 
-
-
 import { AudioPlayer } from './core/audio-player';
 import { YoutubeAudioPlayerJs } from './core/youtube-audio-player-js';
 import { ActionResolver } from './core/action-resolver';

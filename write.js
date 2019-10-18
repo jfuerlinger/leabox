@@ -86,34 +86,34 @@ setInterval(function() {
   console.log("Block 8 will be filled with 0xFF:");
   mfrc522.writeDataToBlock(8, data);
 
-//   console.log("Now Block 8 looks like this:");
-//   console.log(mfrc522.getDataForBlock(8));
+  console.log("Now Block 8 looks like this:");
+  console.log(mfrc522.getDataForBlock(8));
 
-//   data = [
-//     0x00,
-//     0x00,
-//     0x00,
-//     0x00,
-//     0x00,
-//     0x00,
-//     0x00,
-//     0x00,
-//     0x00,
-//     0x00,
-//     0x00,
-//     0x00,
-//     0x00,
-//     0x00,
-//     0x00,
-//     0x00,
-//     0x00
-//   ];
+  data = [
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00
+  ];
 
-//   console.log("Now we fill it with 16 x 0");
-//   mfrc522.writeDataToBlock(8, data);
+  console.log("Now we fill it with 16 x 0");
+  mfrc522.writeDataToBlock(8, data);
 
-//   console.log("It is now empty:");
-//   console.log(mfrc522.getDataForBlock(8));
+  console.log("It is now empty:");
+  console.log(mfrc522.getDataForBlock(8));
 
   mfrc522.stopCrypto();
 
