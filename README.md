@@ -1,6 +1,6 @@
 # Lea's Box [D R A F T]
 
-This project is some kind of a port of Tonies box
+This project is a kind of a [Toniebox](https://tonies.de/toniebox/) port.
 
 # Hardware
 
