@@ -8,7 +8,7 @@ module.exports = {
     })
   ],
   mode: 'development',
-  entry: './index.ts',
+  entry: './',
   target: 'node',
   module: {
     rules: [{

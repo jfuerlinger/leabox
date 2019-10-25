@@ -1,6 +1,7 @@
 //import { AudioPlayer } from "./audio-player";
 
-import { default as chalk } from 'chalk';
+//import { default as chalk } from 'chalk';
+const chalk = require('chalk');
 //import * as ffmpeg from 'fluent-ffmpeg';
 
 const log = console.log;
@@ -17,6 +18,7 @@ const log = console.log;
 //const speaker = require('speaker')
 
 //import { default as YoutubeAudioStream } from '@isolution/youtube-audio-stream';
+//const YoutubeAudioStream = require('@isolution/youtube-audio-stream');
 
 const stream = require('youtube-audio-stream');
 //const stream = require('youtube-audio-stream');
