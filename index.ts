@@ -8,20 +8,19 @@ import * as readline from 'readline';
 const log = console.log;
 
 import { AudioPlayer } from './core/audio-player';
-import { YoutubeAudioPlayerJs } from './core/youtube-audio-player-js';
+import { YoutubeAudioPlayerJS } from './core/youtube-audio-player-js';
 import { ActionResolver } from './core/action-resolver';
 import { DbActionResolver } from './core/db-action-resolver';
 import { RfidController } from './core/rfid-controller'
 
 
-const player: AudioPlayer = new YoutubeAudioPlayerJs();
+const player: AudioPlayer = new YoutubeAudioPlayerJS();
 const actionResolver: ActionResolver = new DbActionResolver();
 
 clear();
 
 readline.emitKeypressEvents(process.stdin);
 //process.stdin.setRawMode(true);
-
 
 
 process.stdin.on('keypress', (str, key) => {
@@ -49,7 +48,9 @@ log(chalk.magentaBright('+---------------------+'));
 
 log(chalk.yellowBright('Press <strg>-<c> to exit ...'));
 
-const url = actionResolver.getUrlForAction("1");
+// const url = actionResolver.getUrlForAction("1");
+// log(`URL='${url}'`);
+const url = 'https://www.youtube.com/watch?v=sX8izWSnK7s';
 log(chalk.green(url));
 if (url != null) {
     player.play(url);

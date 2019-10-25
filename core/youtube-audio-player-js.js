@@ -16,29 +16,40 @@ const log = console.log;
 //const decoder = require('lame').Decoder
 //const speaker = require('speaker')
 
-import { default as YoutubeAudioStream } from '@isolution/youtube-audio-stream';
+//import { default as YoutubeAudioStream } from '@isolution/youtube-audio-stream';
 
-export class YoutubeAudioPlayerJs  {
+const stream = require('youtube-audio-stream');
+//const stream = require('youtube-audio-stream');
+const url = 'https://www.youtube.com/watch?v=sX8izWSnK7s';
+const decoder = require('lame').Decoder;
+const Speaker = require('speaker')
+
+
+export class YoutubeAudioPlayerJs {
 
     // private streamPromise: YoutubeAudioStream;
 
     play(url) {
 
         //let x: speaker.default;
-        new YoutubeAudioStream(url)
-            .then((stream) => {
-                stream.emitter.on('error', (err) => {
-                    console.log(err);
-                });
+        // new YoutubeAudioStream(url)
+        //     .then((stream) => {
+        //         stream.emitter.on('error', (err) => {
+        //             console.log(err);
+        //         });
 
-                // stream
-                //     .pipe(decoder())
-                //     .pipe(speaker());
-            })
-        .catch((err) => {
-            console.log(err);
-        });
+        //         // stream
+        //         //     .pipe(decoder())
+        //         //     .pipe(speaker());
+        //     })
+        // .catch((err) => {
+        //     console.log(err);
+        // });
         log(chalk.green(`Playing file '${url}' ...`));
+        stream(url)
+            .pipe(decoder())
+            .pipe(new Speaker());
+
     }
 
     pause() {
