@@ -1,8 +1,18 @@
 const path = require('path');
 const webpack = require('webpack');
+var fs = require('fs');
 
 const ROOT = path.resolve(__dirname, 'src');
 const DESTINATION = path.resolve(__dirname, 'dist');
+
+var nodeModules = {};
+fs.readdirSync('node_modules')
+    .filter(function (x) {
+        return ['.bin'].indexOf(x) === -1;
+    })
+    .forEach(function (mod) {
+        nodeModules[mod] = 'commonjs ' + mod;
+    });
 
 module.exports = {
     context: ROOT,
@@ -15,6 +25,8 @@ module.exports = {
         filename: '[name].bundle.js',
         path: DESTINATION
     },
+
+    externals: nodeModules,
 
     resolve: {
         extensions: ['.ts', '.js'],
@@ -64,8 +76,12 @@ module.exports = {
     plugins: [
         new webpack.DefinePlugin({
             'process.env.FLUENTFFMPEG_COV': false
+        }),
+        new webpack.IgnorePlugin(/\.(css|less)$/),
+        new webpack.BannerPlugin({
+            banner: 'require("source-map-support").install();',
+            raw: true, 
+            entryOnly: false
         })
     ]
 };
-
-// process.env.FLUENTFFMPEG_COV

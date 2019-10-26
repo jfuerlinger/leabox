@@ -115,3 +115,6 @@ This project is a kind of a [Toniebox](https://tonies.de/toniebox/) port.
 * [Wireless Headless-Setup](https://desertbot.io/blog/headless-raspberry-pi-4-ssh-wifi-setup)
 
 
+# References
+
+* [Some very good post regarding webpack](https://jlongster.com/Backend-Apps-with-Webpack--Part-I)
