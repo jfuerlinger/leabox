@@ -1,9 +1,9 @@
-import { ActionResolver } from "./action-resolver";
+import { ActionResolver } from './action-resolver';
 
-const low = require('lowdb')
-const FileSync = require('lowdb/adapters/FileSync')
-const adapter = new FileSync('db.json')
-const db = low(adapter)
+const low = require('lowdb');
+const FileSync = require('lowdb/adapters/FileSync');
+const adapter = new FileSync('db.json');
+const db = low(adapter);
 
 
 export class DbActionResolver implements ActionResolver {
@@ -31,7 +31,7 @@ export class DbActionResolver implements ActionResolver {
 
     getUrlForAction(action: string): string {
         return db.get('songs')
-            .find((value) => value.id == action)
+            .find((value) => value.id === action)
             .value()
             .url;
     }

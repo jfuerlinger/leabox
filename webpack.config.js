@@ -1,33 +1,71 @@
 const path = require('path');
 const webpack = require('webpack');
 
-module.exports = {
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env.FLUENTFFMPEG_COV': false
-    })
-  ],
-  mode: 'development',
-  entry: './',
-  target: 'node',
-  module: {
-    rules: [{
-      test: /\.tsx?$/,
-      use: 'ts-loader',
-      exclude: /node_modules/,
-    }, ],
-  },
+const ROOT = path.resolve(__dirname, 'src');
+const DESTINATION = path.resolve(__dirname, 'dist');
 
-  resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
-  },
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    //libraryTarget: 'commonjs2'
-  },
-  // node: {
-  //   fs: 'empty',
-    
-  // }
+module.exports = {
+    context: ROOT,
+
+    entry: {
+        'main': './leabox.ts'
+    },
+
+    output: {
+        filename: '[name].bundle.js',
+        path: DESTINATION
+    },
+
+    resolve: {
+        extensions: ['.ts', '.js'],
+        modules: [
+            ROOT,
+            'node_modules'
+        ]
+    },
+
+    node:
+    {
+        "child_process": "empty",
+        "fs": "empty"
+    },
+
+    module: {
+        rules: [
+            /****************
+            * PRE-LOADERS
+            *****************/
+            {
+                enforce: 'pre',
+                test: /\.js$/,
+                use: 'source-map-loader'
+            },
+            {
+                enforce: 'pre',
+                test: /\.ts$/,
+                exclude: /node_modules/,
+                use: 'tslint-loader'
+            },
+
+            /****************
+            * LOADERS
+            *****************/
+            {
+                test: /\.ts$/,
+                exclude: [/node_modules/],
+                use: 'awesome-typescript-loader'
+            }
+        ]
+    },
+
+    devtool: 'cheap-module-source-map',
+    devServer: {},
+
+    plugins: [
+        new webpack.DefinePlugin({
+            'process.env.FLUENTFFMPEG_COV': false
+        })
+    ]
 };
+
+// process.env.FLUENTFFMPEG_COV
