@@ -4,7 +4,7 @@ const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
 const adapter = new FileSync('db.json');
 const db = low(adapter);
-const logger = require(''./logger')
+const logger = require('./logger');
 
 export class DbActionResolver implements ActionResolver {
 
@@ -30,11 +30,14 @@ export class DbActionResolver implements ActionResolver {
     }
 
     getUrlForAction(action: string): string {
+
+        logger.info(`resolving url for action ${action} ...`);
+
         return db.get('songs')
-            // .find((value) => value.id === action)
-            .filter({id: action})
-            .value()
-            .url;
+                    .filter({id: 'JqvuOLi_'})
+                    .first()
+                    .value()
+                    .url;
     }
 
 }

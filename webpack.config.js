@@ -71,7 +71,7 @@ module.exports = {
     },
 
     devtool: 'cheap-module-source-map',
-    devServer: {},
+    //devServer: {},
 
     plugins: [
         new webpack.DefinePlugin({

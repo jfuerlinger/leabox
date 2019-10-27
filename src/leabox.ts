@@ -1,15 +1,3 @@
-// import chalk from 'chalk';
-// import {YoutubeAudioPlayer } from './core/youtube-audio-player';
-
-// const player: YoutubeAudioPlayer = new YoutubeAudioPlayer();
-
-// player.play('https://www.youtube.com/watch?v=lhYAbMbsMJY');
-
-// import { Greeter } from './greeter';
-
-// const g = new Greeter('Juri');
-// g.greet();
-
 const readline = require('readline');
 const process = require('process');
 const logger = require('./core/logger');
@@ -54,7 +42,7 @@ process.stdin.on('keypress', (str, key) => {
     }
 });
 
-
+debugger;
 
 
 log(chalk.magentaBright('+---------------------+'));
@@ -63,19 +51,17 @@ log(chalk.magentaBright('+---------------------+'));
 
 log(chalk.yellowBright('Press <strg>-<c> to exit ...'));
 
-const url = actionResolver.getUrlForAction('JqvuOLi_');
-log(`URL='${url}'`);
-// // const url = 'https://www.youtube.com/watch?v=sX8izWSnK7s';
-// log(chalk.green(url));
-// if (url != null) {
-//     player.play(url);
-// }
-
 const rfidController = new RfidController();
 rfidController
     .getObservable()
     .subscribe({
-        next(id) { logger.info(`got id '${id}'`); },
+        next(id) {
+            logger.info(`got id '${id}'`);
+            const url = actionResolver.getUrlForAction('JqvuOLi_');
+            if (url != null) {
+                player.play(url);
+            }
+        },
         error(err) { logger.error('something wrong occurred: ' + err); },
         complete() { logger.info('done'); }
     });
