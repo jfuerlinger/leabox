@@ -1,3 +1,5 @@
+import { Action } from "../model/action";
+
 export interface ActionResolver {
-    getUrlForAction(action: string): string;
+    getActionById(id: string): Action;
 }

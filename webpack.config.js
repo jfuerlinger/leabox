@@ -18,7 +18,7 @@ module.exports = {
     context: ROOT,
 
     entry: {
-        'main': './leabox.ts'
+        'main': './index.ts'
     },
 
     output: {

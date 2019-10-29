@@ -75,11 +75,11 @@ This project is a kind of a [Toniebox](https://tonies.de/toniebox/) port.
 
 1. Install Git:
  
-   `sudo apt-get install git`
+   `sudo apt-get install git -y`
 
 1. Install libasound2-dev (needed for the npm-speaker module)
 
-   `sudo apt-get install libasound2-dev`
+   `sudo apt-get install libasound2-dev -y`
 
 1. Install ffmpeg with needed codecs:
 

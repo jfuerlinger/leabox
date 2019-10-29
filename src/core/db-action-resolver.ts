@@ -1,4 +1,5 @@
 import { ActionResolver } from './action-resolver';
+import { Action } from '../model/action';
 
 const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
@@ -11,17 +12,20 @@ export class DbActionResolver implements ActionResolver {
     constructor() {
         // Set some defaults (required if your JSON file is empty)
         db.defaults({
-            songs: [
+            actions: [
                 {
                     id: 'JqvuOLi_',
+                    action: 'youtube',
                     url: 'https://www.youtube.com/watch?v=BYM3Pr3_Ov8'
                 },
                 {
                     id: '2',
+                    action: 'youtube',
                     url: 'https://www.youtube.com/watch?v=Ax7OkxiEmuY'
                 },
                 {
                     id: '3',
+                    action: 'youtube',
                     url: 'https://www.youtube.com/watch?v=YWWKakbIkW0'
                 }
             ],
@@ -29,15 +33,11 @@ export class DbActionResolver implements ActionResolver {
             .write();
     }
 
-    getUrlForAction(action: string): string {
-
-        logger.info(`resolving url for action ${action} ...`);
-
-        return db.get('songs')
-                    .filter({id: 'JqvuOLi_'})
-                    .first()
-                    .value()
-                    .url;
+    getActionById(id: string): Action {
+        logger.info(`resolving action with id '${id}' ...`);
+        return db.get('actions')
+            .filter({ id: id })
+            .first()
+            .value();
     }
-
 }

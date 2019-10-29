@@ -13,8 +13,13 @@ const appInsightsClient = new appInsights.TelemetryClient();
 
 export class YoutubeAudioPlayer implements AudioPlayer {
 
-    private decoder: any;
-    private speaker: any;
+    private _decoder: any;
+    private _speaker: any;
+    private _isPlaying: boolean;
+
+    constructor() {
+        this._isPlaying = false;
+    }
 
     play(url: string): void {
         appInsightsClient.trackEvent({ name: 'youtube-player:play', properties: { url: url } });
@@ -23,37 +28,50 @@ export class YoutubeAudioPlayer implements AudioPlayer {
         logger.info(logMessage);
         log(chalk.green(logMessage));
 
-        this.decoder =
-            stream(url, [])
-                .pipe(decoder());
+        if (!this._isPlaying) {
 
-        this.speaker =
-            this.decoder
-                .pipe(new speaker());
+            this._decoder =
+                stream(url, [])
+                    .pipe(decoder());
+
+            this._speaker =
+                this._decoder
+                    .pipe(new speaker());
+
+            this._isPlaying = true;
+        } else {
+            logger.warn('The player is currently playing!');
+        }
     }
 
     isPlaying(): boolean {
-        return true;
+        return this._isPlaying;
     }
 
     stop() {
-        appInsightsClient.trackEvent({ name: 'youtube-player:stop', properties: { } });
+        appInsightsClient.trackEvent({ name: 'youtube-player:stop', properties: {} });
 
         const logMessage = `stop()`;
         logger.info(logMessage);
         log(chalk.green(logMessage));
 
-        if (this.speaker) {
-            this.speaker.end();
+        if (!this._isPlaying) {
+            return;
         }
 
-        if (this.decoder) {
-            this.decoder.end();
+        if (this._speaker) {
+            this._speaker.end();
         }
+
+        if (this._decoder) {
+            this._decoder.end();
+        }
+
+        this._isPlaying = false;
     }
 
     pause(): void {
-        appInsightsClient.trackEvent({ name: 'youtube-player:pause', properties: { } });
+        appInsightsClient.trackEvent({ name: 'youtube-player:pause', properties: {} });
 
         const logMessage = `pause()`;
         logger.info(logMessage);
@@ -69,7 +87,7 @@ export class YoutubeAudioPlayer implements AudioPlayer {
     }
 
     resume(): void {
-        appInsightsClient.trackEvent({ name: 'youtube-player:resume', properties: { } });
+        appInsightsClient.trackEvent({ name: 'youtube-player:resume', properties: {} });
 
         const logMessage = `resume()`;
         logger.info(logMessage);

@@ -1,15 +1,18 @@
 {
-  "songs": [
+  "actions": [
     {
       "id": "JqvuOLi_",
+      "type": "youtube",
       "url": "https://www.youtube.com/watch?v=BYM3Pr3_Ov8"
     },
     {
       "id": "2",
+      "type": "youtube",
       "url": "https://www.youtube.com/watch?v=Ax7OkxiEmuY"
     },
     {
       "id": "3",
+      "type": "youtube",
       "url": "https://www.youtube.com/watch?v=YWWKakbIkW0"
     }
   ]

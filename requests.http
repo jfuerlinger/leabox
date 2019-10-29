@@ -1,0 +1,8 @@
+### Test the web api of the leabox
+GET http://localhost:3000/
+
+### Discover an id
+GET http://localhost:3000/api/discover/JqvuOLi_
+
+### Stop the player
+GET http://localhost:3000/api/stop
