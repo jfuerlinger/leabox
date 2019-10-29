@@ -8,7 +8,7 @@ const stream = require('youtube-audio-stream');
 const decoder = require('lame').Decoder;
 const speaker = require('speaker');
 
-const appInsights = require("applicationinsights");
+const appInsights = require('applicationinsights');
 const appInsightsClient = new appInsights.TelemetryClient();
 
 export class YoutubeAudioPlayer implements AudioPlayer {
@@ -22,7 +22,6 @@ export class YoutubeAudioPlayer implements AudioPlayer {
         const logMessage = `Playing file '${url}' ...`;
         logger.info(logMessage);
         log(chalk.green(logMessage));
-        
 
         this.decoder =
             stream(url, [])
