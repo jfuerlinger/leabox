@@ -9,6 +9,9 @@ import { default as shortid } from 'shortid';
 const logger = require('./logger');
 
 export class RfidController {
+
+    static EMPTY_TAG: string = 'n/a';
+
     getObservable(): Observable<string> {
         return new Observable(subscriber => {
 
@@ -36,6 +39,7 @@ export class RfidController {
                 let response = mfrc522.findCard();
 
                 if (!response.status) {
+                    subscriber.next(RfidController.EMPTY_TAG);
                     return;
                 }
                 logger.debug('Card detected, CardType: ' + response.bitSize);
@@ -129,7 +133,7 @@ export class RfidController {
 
                 // Stop
                 mfrc522.stopCrypto();
-            }, 500);
+            }, 1000);
 
         });
     }

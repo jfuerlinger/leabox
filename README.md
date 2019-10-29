@@ -114,6 +114,29 @@ This project is a kind of a [Toniebox](https://tonies.de/toniebox/) port.
 
 * [Wireless Headless-Setup](https://desertbot.io/blog/headless-raspberry-pi-4-ssh-wifi-setup)
 
+# Bluetooth Connection
+
+## Ressources
+
+* [Connection with Bluealsa](https://www.sigmdel.ca/michel/ha/rpi/bluetooth_02_en.html#connecting)
+* [Error Fixing](https://www.sigmdel.ca/michel/ha/rpi/bluetooth_03_en.html)
+
+# Configuration
+
+## Instrumentation
+
+To get some insights and telemetry data Microsoft Application Insights are used.
+
+Therefor its needed to export the instrumentation key as a global variable:
+
+``` bash
+echo 'export APPINSIGHTS_INSTRUMENTATIONKEY="<YOUR-INSTRUMENTATION-KEY>"' >> ~/.bashrc
+```
+
+
+## Ressources
+
+* [Monitor your Node.js services and apps with Application Insights](https://docs.microsoft.com/en-us/azure/azure-monitor/app/nodejs)
 
 # References
 

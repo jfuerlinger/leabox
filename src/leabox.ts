@@ -2,6 +2,8 @@ const readline = require('readline');
 const process = require('process');
 const logger = require('./core/logger');
 
+import { distinctUntilChanged, skip } from 'rxjs/operators';
+
 import clear from 'clear';
 import { default as chalk } from 'chalk';
 
@@ -17,6 +19,20 @@ import { RfidController } from './core/rfid-controller';
 
 const player: AudioPlayer = new YoutubeAudioPlayer();
 const actionResolver: ActionResolver = new DbActionResolver();
+
+const appInsights = require('applicationinsights');
+
+appInsights.setup()
+    .setAutoDependencyCorrelation(true)
+    .setAutoCollectRequests(true)
+    .setAutoCollectPerformance(true)
+    .setAutoCollectExceptions(true)
+    .setAutoCollectDependencies(true)
+    .setAutoCollectConsole(true)
+    .setUseDiskRetryCaching(true)
+    .start();
+let client = appInsights.defaultClient;
+logger.info('Application Insights configured');
 
 clear();
 
@@ -42,9 +58,6 @@ process.stdin.on('keypress', (str, key) => {
     }
 });
 
-debugger;
-
-
 log(chalk.magentaBright('+---------------------+'));
 log(chalk.magentaBright('|      Lea\'s box      |'));
 log(chalk.magentaBright('+---------------------+'));
@@ -54,12 +67,25 @@ log(chalk.yellowBright('Press <strg>-<c> to exit ...'));
 const rfidController = new RfidController();
 rfidController
     .getObservable()
+    .pipe(
+        distinctUntilChanged() // only pass changes
+        , skip(1) // skip first emit because its the info, that there was no rfid chip found
+    )
     .subscribe({
         next(id) {
+            client.trackEvent({ name: 'rfid:tag-recognized', properties: { id: id } });
             logger.info(`got id '${id}'`);
-            const url = actionResolver.getUrlForAction('JqvuOLi_');
-            if (url != null) {
-                player.play(url);
+            switch (id) {
+                case RfidController.EMPTY_TAG:
+                    player.stop();
+                    break;
+
+                default:
+                    const url = actionResolver.getUrlForAction(id);
+                    if (url != null) {
+                        player.play(url);
+                    }
+                    break;
             }
         },
         error(err) { logger.error('something wrong occurred: ' + err); },
