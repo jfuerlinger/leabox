@@ -34,3 +34,5 @@ git clone https://github.com/jfuerlinger/leabox
 cd leabox
 
 npm install
+
+npm audit fix
