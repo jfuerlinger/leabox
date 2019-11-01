@@ -21,7 +21,7 @@ export class LeaBoxController {
     private _commandProcessors: CommandProcessor[] = [
         new CliCommandProcessor(this),
         new WebApiCommandProcessor(this),
-        new RfidCommandProcessor(this)
+        // new RfidCommandProcessor(this)
     ];
 
     constructor() {

@@ -1,17 +1,22 @@
 import { CommandProcessor } from './command-processor';
 import { LeaBoxController } from '../leabox-controller';
 import { RfidController } from '../rfid-controller';
-import { distinctUntilChanged, skip } from 'rxjs/operators';
-import { Observable, empty } from 'rxjs';
 const logger = require('../logger');
+
+import path from 'path';
+import { distinctUntilChanged, skip } from 'rxjs/operators';
 
 const appInsights = require('applicationinsights');
 const appInsightsClient = new appInsights.TelemetryClient();
 
+// const { Worker } = require('worker_threads');
+
+// type WorkerCallback = (err: any, result?: any) => any;
+
 export class RfidCommandProcessor implements CommandProcessor {
 
     private _isProcessing: boolean;
-    private _rfidController;
+    private _rfidController: RfidController;
 
     constructor(private _leaBoxController: LeaBoxController) {
         this._isProcessing = false;
@@ -21,6 +26,18 @@ export class RfidCommandProcessor implements CommandProcessor {
     init(): void {
 
         const processor: RfidCommandProcessor = this;
+
+        // const worker = this.runWorker(path.join(__dirname, 'worker.js'), (err, { value }) => {
+        //     if (err) {
+        //         logger.warn('Error from RfidThreadWorker: ' + err);
+        //         return null;
+        //     }
+
+        //     processor.handleCommand(value);
+        //     return null;
+        // });
+
+        // worker.postMessage({});
 
         this._rfidController
             .getObservable()
@@ -63,4 +80,18 @@ export class RfidCommandProcessor implements CommandProcessor {
     isProcessing(): boolean {
         return this._isProcessing;
     }
+
+    // private runWorker(path: string, cb: WorkerCallback, workerData: object | null = null) {
+
+    //     const worker = new Worker(path, { payload: 'xyz' });
+    //     worker.on('message', cb.bind(null, null));
+    //     worker.on('error', cb);
+    //     worker.on('exit', (exitCode) => {
+    //         if (exitCode === 0) {
+    //             return null;
+    //         }
+    //         return cb(new Error(`Worker has stopped with code ${exitCode}`));
+    //     });
+    //     return worker;
+    // }
 }
