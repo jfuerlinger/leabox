@@ -5,6 +5,7 @@ const express = require('express');
 import { Request, Response } from 'express';
 import { LeaBoxController } from '../leabox-controller';
 import { default as chalk } from 'chalk';
+const logger = require('../logger');
 
 
 const appInsights = require('applicationinsights');
@@ -30,9 +31,11 @@ export class WebApiCommandProcessor implements CommandProcessor {
         this._expressApp.use(express.json());
 
         this._expressApp.get('/api/discover/:id', (req: Request, res: Response) => {
+            const id: string = req.params.id;
+            logger.info(`/api/discover/${id} was called`);
 
             if (this._isProcessing === true) {
-                const id: string = req.params.id;
+
                 appInsightsClient.trackEvent({ name: 'webapi:play-command', properties: { id: id, request: req } });
                 this._leaBoxController.processId(id);
             }
@@ -42,6 +45,8 @@ export class WebApiCommandProcessor implements CommandProcessor {
                 .send('ok');
         });
         this._expressApp.get('/api/stop', (req: Request, res: Response) => {
+
+            logger.info(`/api/stop was called`);
 
             if (this._isProcessing === true) {
                 appInsightsClient.trackEvent({ name: 'webapi:stop-command', properties: { request: req } });
