@@ -65,11 +65,11 @@ This project is a kind of a [Toniebox](https://tonies.de/toniebox/) port.
 1. Install Node JS: 
 
    ``` bash
-   wget https://nodejs.org/dist/latest-v13.x/node-v13.0.1-linux-armv7l.tar.xz
-   tar -xf node-v13.0.1-linux-armv7l.tar.xz
-   sudo cp -R node-v13.0.1-linux-armv7l/* /usr/local/
-   rm node-v13.0.1-linux-armv7l.tar.xz
-   rm -R node-v13.0.1-linux-armv7l
+   wget https://nodejs.org/dist/latest-v11.x/node-v11.15.0-linux-armv6l.tar.xz
+   tar -xf node-v11.15.0-linux-armv6l.tar.xz
+   sudo cp -R node-v11.15.0-linux-armv6l/* /usr/local/
+   rm node-v11.15.0-linux-armv6l.tar.xz
+   rm -R node-v11.15.0-linux-armv6l
    node -v
    ```
 
