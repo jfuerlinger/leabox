@@ -19,9 +19,9 @@ export class LeaBoxController {
     private _player: AudioPlayer;
 
     private _commandProcessors: CommandProcessor[] = [
-        // new CliCommandProcessor(this),
-        // new WebApiCommandProcessor(this),
-        new RfidCommandProcessor(this)
+        new CliCommandProcessor(this),
+        new WebApiCommandProcessor(this),
+        // new RfidCommandProcessor(this)
     ];
 
     constructor() {

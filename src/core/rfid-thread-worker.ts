@@ -1,7 +1,8 @@
 import { RfidController } from "./rfid-controller";
 import { distinctUntilChanged, skip } from "rxjs/operators";
 
-import { parentPort, workerData } from 'worker_threads';
+//import { parentPort, workerData } from 'worker_threads';
+const worker = require('worker_threads');
 
 const rfidController: RfidController = new RfidController();
 
@@ -13,7 +14,7 @@ rfidController
 
     ).subscribe({
         next(id) {
-            parentPort.postMessage({ id });
+            worker.parentPort.postMessage({ id });
         },
         error(err) { logger.error('something wrong occurred: ' + err); },
         complete() { logger.info('done'); }

@@ -8,7 +8,9 @@ import { default as shortid } from 'shortid';
 
 const logger = require('./logger');
 
-import { parentPort, workerData } from 'worker_threads';
+// import { parentPort, workerData } from 'worker_threads';
+
+// const worker = require('worker_threads');
 
 export class RfidController {
 
@@ -156,6 +158,4 @@ export class RfidController {
         // Stop
         this._mfrc522.stopCrypto();
     }
-
-    
 }

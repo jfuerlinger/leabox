@@ -62,64 +62,64 @@ This project is a kind of a [Toniebox](https://tonies.de/toniebox/) port.
 
    1. ... run the script
    
-   ``` bash
+       ``` bash
    
-   wget -O - https://raw.githubusercontent.com/jfuerlinger/leabox/dev/scripts/configure.sh | bash
+       wget -O - https://raw.githubusercontent.com/jfuerlinger/leabox/dev/scripts/configure.sh | bash
    
-   ```
+       ```
    
    1. ... perform the steps manually
 
-     1. Update your packages:
+        1. Update your packages:
 
          `sudo apt-get update -y && sudo apt-get upgrade -y`
 
-     1. Install Node JS: 
+        1. Install Node JS: 
 
-         ``` bash
-         wget https://nodejs.org/dist/latest-v11.x/node-v11.15.0-linux-armv6l.tar.xz
-         tar -xf node-v11.15.0-linux-armv6l.tar.xz
-         sudo cp -R node-v11.15.0-linux-armv6l/* /usr/local/
-         rm node-v11.15.0-linux-armv6l.tar.xz
-         rm -R node-v11.15.0-linux-armv6l
-         node -v
-         ```
+        ``` bash
+        wget https://nodejs.org/dist/latest-v11.x/node-v11.15.0-linux-armv6l.tar.xz
+        tar -xf node-v11.15.0-linux-armv6l.tar.xz
+        sudo cp -R node-v11.15.0-linux-armv6l/* /usr/local/
+        rm node-v11.15.0-linux-armv6l.tar.xz
+        rm -R node-v11.15.0-linux-armv6l
+        node -v
+        ```
 
-     1. Install Git:
+        1. Install Git:
 
-         `sudo apt-get install git -y`
+        `sudo apt-get install git -y`
 
-     1. Install libasound2-dev (needed for the npm-speaker module)
+        1. Install libasound2-dev (needed for the npm-speaker module)
 
-         `sudo apt-get install libasound2-dev -y`
+        `sudo apt-get install libasound2-dev -y`
 
-     1. Install ffmpeg with needed codecs:
+        1. Install ffmpeg with needed codecs:
 
-         ``` bash
-         git clone --depth 1 http://git.videolan.org/git/x264
-         cd x264
-         ./configure --host=arm-unknown-linux-gnueabi --enable-static --disable-opencl
-         make -j4
-         sudo make install
-         cd ..
-         rm -rf x264
-         sudo apt-get install libmp3lame-dev -y
-         git clone git://source.ffmpeg.org/ffmpeg --depth=1
-         cd ffmpeg
-         ./configure --arch=armel --target-os=linux --enable-gpl --enable-libx264 --enable-libmp3lame --enable-nonfree
-         make -j4
-         sudo make install
-         cd ..
-         rm -rf ffmpeg
-         ```
+        ``` bash
+        git clone --depth 1 http://git.videolan.org/git/x264
+        cd x264
+        ./configure --host=arm-unknown-linux-gnueabi --enable-static --disable-opencl
+        make -j4
+        sudo make install
+        cd ..
+        rm -rf x264
+        sudo apt-get install libmp3lame-dev -y
+        git clone git://source.ffmpeg.org/ffmpeg --depth=1
+        cd ffmpeg
+        ./configure --arch=armel --target-os=linux --enable-gpl --enable-libx264 --enable-libmp3lame --enable-nonfree
+        make -j4
+        sudo make install
+        cd ..
+        rm -rf ffmpeg
+        ```
 
-     1. Clone the source
+        1. Clone the source
 
-         `git clone https://github.com/jfuerlinger/leabox`
+        `git clone https://github.com/jfuerlinger/leabox`
 
-     1. Download all the npm-modules
+        1. Download all the npm-modules
 
-         `npm install`
+        `npm install`
 
 
 ## Ressources

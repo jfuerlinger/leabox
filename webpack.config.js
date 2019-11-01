@@ -80,7 +80,7 @@ module.exports = {
         new webpack.IgnorePlugin(/\.(css|less)$/),
         new webpack.BannerPlugin({
             banner: 'require("source-map-support").install();',
-            raw: true, 
+            raw: true,
             entryOnly: false
         })
     ]
