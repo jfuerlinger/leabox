@@ -9,8 +9,13 @@
             "request": "launch",
             "name": "Debug Lea-Box",
             "program": "${workspaceFolder}/dist/main.bundle.js",
-            "outFiles": ["${workspaceFolder}/dist/"],
+            "outFiles": [
+                "${workspaceFolder}/dist/"
+            ],
             //"stopOnEntry": true,
+            "env": {
+                "APPINSIGHTS_INSTRUMENTATIONKEY": "c6c4211f-e807-42bc-9f12-616ee35cbef1"
+            },
             "sourceMaps": true
         },
         {

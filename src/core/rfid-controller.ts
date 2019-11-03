@@ -8,10 +8,6 @@ import { default as shortid } from 'shortid';
 
 const logger = require('./logger');
 
-// import { parentPort, workerData } from 'worker_threads';
-
-// const worker = require('worker_threads');
-
 export class RfidController {
 
     static EMPTY_TAG: string = 'n/a';
@@ -43,7 +39,7 @@ export class RfidController {
 
             setInterval(() => {
                 this.readRfidTag(subscriber);
-            }, 30000);
+            }, 750);
 
         });
     }

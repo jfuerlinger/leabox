@@ -145,7 +145,6 @@ Therefor its needed to export the instrumentation key as a global variable:
 echo 'export APPINSIGHTS_INSTRUMENTATIONKEY="<YOUR-INSTRUMENTATION-KEY>"' >> ~/.bashrc
 ```
 
-
 ## Ressources
 
 * [Monitor your Node.js services and apps with Application Insights](https://docs.microsoft.com/en-us/azure/azure-monitor/app/nodejs)
