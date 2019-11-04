@@ -6,13 +6,6 @@ const express = require('express');
 import { default as chalk } from 'chalk';
 
 import { Request, Response } from 'express';
-const commandLineArgs = require('command-line-args');
-import { LeaBoxController } from './core/leabox-controller';
-import { MongoDbActionDao } from './core/persistence/mongo-db-action-dao';
-import { ActionDao } from './core/persistence/action-dao';
-import { RfidController } from './core/rfid-controller';
-import { RfidCommandProcessor } from './core/command-processing/rfid-command-processor';
-import { distinctUntilChanged, skip } from 'rxjs/operators';
 const logger = require('./core/logger');
 const appInsights = require('applicationinsights');
 
