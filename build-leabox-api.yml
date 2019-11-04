@@ -20,7 +20,6 @@ steps:
     targetType: 'inline'
     script: |
       ls -al
-      cd components/leabox-api
 
 - script: |
     npm install
