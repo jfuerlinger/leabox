@@ -1,4 +1,3 @@
-const commandLineArgs = require('command-line-args');
 import { RfidController } from './core/rfid-controller';
 import { distinctUntilChanged, skip } from 'rxjs/operators';
 const logger = require('./core/logger');
