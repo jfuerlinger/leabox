@@ -16,7 +16,7 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    cd leabox/components/leabox-api
+    cd components/leabox-api/
     npm install
     npm run build
   displayName: 'npm install and build'
