@@ -21,13 +21,13 @@ steps:
     npm run build
   displayName: 'npm install and build'
 
-# - task: ArchiveFiles@2
-#   inputs:
-#     rootFolderOrFile: 'components/leabox-api/dist'
-#     includeRootFolder: false
-#     archiveType: 'zip'
-#     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-#     replaceExistingArchive: true
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: 'components/leabox-api/dist'
+    Contents: '**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    CleanTargetFolder: true
+    OverWrite: true
 
 - task: PublishBuildArtifacts@1
   inputs:
