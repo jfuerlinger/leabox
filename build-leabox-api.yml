@@ -28,6 +28,7 @@ steps:
     SourceFolder: '$(System.DefaultWorkingDirectory)/components/leabox-api'
     Contents: |
       dist/**/*.js
+      dist/**/*.js.map
       package.json
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
