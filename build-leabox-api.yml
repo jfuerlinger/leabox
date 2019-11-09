@@ -21,24 +21,44 @@ steps:
     npm run build
   displayName: 'npm install and build'
 
+
 - task: CopyFiles@2
   inputs:
-    SourceFolder: 'components/leabox-api/dist'
-    Contents: 'main.bundle.js*'
+    SourceFolder: '$(System.DefaultWorkingDirectory)/components/leabox-api'
+    Contents: |
+      **\*.js
+      package.json
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
-    CleanTargetFolder: true
-    OverWrite: true
-
-- task: ArchiveFiles@2
-  inputs:
-    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
-    includeRootFolder: false
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    replaceExistingArchive: true
 
 - task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'leabox-api'
-    publishLocation: 'Container'
+
+
+# - task: CopyFiles@2
+#   inputs:
+#     SourceFolder: 'components/leabox-api/dist'
+#     Contents: 'main.bundle.js*'
+#     TargetFolder: '$(Build.ArtifactStagingDirectory)'
+#     CleanTargetFolder: false
+#     OverWrite: true
+
+# - task: CopyFiles@2
+#   inputs:
+#     SourceFolder: 'components/leabox-api'
+#     Contents: 'package*.json'
+#     TargetFolder: '$(Build.ArtifactStagingDirectory)'
+#     CleanTargetFolder: false
+#     OverWrite: true
+
+# - task: ArchiveFiles@2
+#   inputs:
+#     rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+#     includeRootFolder: false
+#     archiveType: 'zip'
+#     archiveFile: '$(Build.ArtifactStagingDirectory)/output/$(Build.BuildId).zip'
+#     replaceExistingArchive: true
+
+# - task: PublishBuildArtifacts@1
+#   inputs:
+#     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+#     ArtifactName: 'leabox-api'
+#     publishLocation: 'Container'
