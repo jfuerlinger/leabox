@@ -43,9 +43,17 @@ steps:
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
 
+# - task: PublishBuildArtifacts@1
+#   inputs:
+#     ArtifactName: 'leabox-api'
+
 - task: PublishBuildArtifacts@1
   inputs:
-    ArtifactName: 'leabox-api'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+
+    
 
 
 # - task: CopyFiles@2
