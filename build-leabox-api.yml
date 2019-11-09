@@ -35,8 +35,8 @@ steps:
       dist/**/*.js
       dist/**/*.js.map
       package.json
+      leabox-api.PublishSettings
     TargetFolder: '$(System.DefaultWorkingDirectory)/output'
-    CleanTargetFolder: true
 
 - task: ArchiveFiles@2
   inputs:
