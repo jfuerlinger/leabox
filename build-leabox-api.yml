@@ -24,7 +24,7 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '$(System.DefaultWorkingDirectory)/components/leabox-api'
+    SourceFolder: '$(System.DefaultWorkingDirectory)'
     Contents: |
       **\*.js
       package.json
