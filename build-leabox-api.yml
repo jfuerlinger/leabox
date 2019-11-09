@@ -16,15 +16,14 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    mkdir $(System.DefaultWorkingDirectory)/output
     cd components/leabox-api
+    mkdir output
   displayName: 'init environment'
 
 
 - script: |
     npm install
     npm run build
-    echo $(System.DefaultWorkingDirectory)
   displayName: 'npm install and build'
 
 
@@ -36,11 +35,11 @@ steps:
       dist/**/*.js.map
       package.json
       leabox-api.PublishSettings
-    TargetFolder: '$(System.DefaultWorkingDirectory)/output'
+    TargetFolder: './output'
 
 - task: ArchiveFiles@2
   inputs:
-    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/output'
+    rootFolderOrFile: './output'
     includeRootFolder: false
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
