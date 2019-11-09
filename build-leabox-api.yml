@@ -25,12 +25,14 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '$(System.DefaultWorkingDirectory)/components/leabox-api'
+    SourceFolder: '$(System.DefaultWorkingDirectory)/components/leabox-api/dist'
     Contents: |
-      dist/**/*.js
-      dist/**/*.js.map
-      package.json
-      leabox-api.PublishSettings
+      **/*.js
+      **/*.js.map
+      # dist/**/*.js
+      # dist/**/*.js.map
+      # package.json
+      # leabox-api.PublishSettings
     TargetFolder: '$(System.DefaultWorkingDirectory)/components/leabox-api/output'
 
 - task: ArchiveFiles@2
