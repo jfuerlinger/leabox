@@ -16,7 +16,12 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
+    mkdir $(System.DefaultWorkingDirectory)/output
     cd components/leabox-api
+  displayName: 'init environment'
+
+
+- script: |
     npm install
     npm run build
     echo $(System.DefaultWorkingDirectory)
@@ -30,7 +35,16 @@ steps:
       dist/**/*.js
       dist/**/*.js.map
       package.json
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    TargetFolder: '$(System.DefaultWorkingDirectory)/output'
+    CleanTargetFolder: true
+
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/output'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
 
 - task: PublishBuildArtifacts@1
   inputs:
