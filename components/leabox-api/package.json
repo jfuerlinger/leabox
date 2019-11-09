@@ -7,7 +7,7 @@
     "clean": "rimraf ./dist",
     "check": "standard **/*.js",
     "watch": "clear && webpack --watch --mode=development",
-    "start": "clear && nodemon ./dist/main.bundle.js --watch ./dist",
+    "start": "set APPINSIGHTS_INSTRUMENTATIONKEY=eaece81a-a39a-4239-aae6-35cedc1e0350 && clear && nodemon ./dist/main.bundle.js --watch ./dist",
     "build": "npm run-script clean && webpack --config webpack.config.js --mode=production",
     "build.prod": "webpack --config webpack.config.js -p",
     "build.esnext": "npm run build:types && npm run build:js",
