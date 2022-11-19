@@ -70,11 +70,11 @@
     "karma-webpack": "3.0.0",
     "nodemon": "^1.19.4",
     "rimraf": "^3.0.0",
-    "source-map-loader": "0.2.3",
+    "source-map-loader": "0.2.4",
     "tslint": "5.17.0",
     "tslint-loader": "3.6.0",
     "typescript": "^3.6.4",
     "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10"
+    "webpack-cli": "^3.3.12"
   }
 }
